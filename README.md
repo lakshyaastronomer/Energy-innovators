@@ -139,4 +139,4 @@ Conclusion
 Energy Innovators is a promising platform that combines modern web technologies with a passion for sustainability education. Its responsive design, interactive elements, and focus on SDGs and renewable energy make it an engaging tool for learners of all ages. With minor refinements to content, performance, and interactivity, the platform has the potential to become a leading resource for sustainable education.
 Visit Energy Innovators to explore this innovative platform and join the journey toward a sustainable future!
 
-![image alt]()
+![image alt](https://github.com/lakshyaastronomer/Energy-innovators/blob/fb921ade620b88d7ffb19f1bd22e339f39047394/123.JPG)
