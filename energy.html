@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Renewable Energy Carousel</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+    body {
+      margin: 0;
+      background-color: #000;
+      color: #eee;
+      font-family: Poppins, sans-serif;
+      font-size: 12px;
+      overflow-x: hidden;
+    }
+    a { text-decoration: none; }
+
+    .back-button {
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 20px;
+      background: rgba(255, 255, 255, 0.1);
+      color: #fff;
+      border-radius: 30px;
+      font-size: 14px;
+      font-weight: 500;
+      transition: all 0.3s ease;
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      z-index: 1000;
+    }
+    .back-button span { font-size: 20px; line-height: 1; }
+    .back-button:hover { background: rgba(255, 255, 255, 0.2); transform: translateX(-5px); }
+
+    /* carousel */
+    .carousel { height: 100vh; width: 100vw; overflow: hidden; position: relative; }
+    .carousel .list .item { 
+      width: 100%; 
+      height: 100%; 
+      position: absolute; 
+      inset: 0; 
+      opacity: 0;
+      transition: opacity 1s ease;
+    }
+    .carousel .list .item.active { opacity: 1; z-index: 2; }
+
+    .carousel .list .item img { 
+      width: 100%; 
+      height: 100%; 
+      object-fit: cover; 
+      transform: scale(1.1); 
+      transition: transform 1s ease;
+    }
+    .carousel .list .item.active img {
+      transform: scale(1);
+    }
+
+    .carousel .list .item .content {
+      position: absolute; 
+      top: 15%; 
+      width: 85%; 
+      left: 50%; 
+      transform: translateX(-50%);
+      color: #fff; 
+      text-shadow: 0 5px 10px #0004;
+      padding: 20px;
+      box-sizing: border-box;
+      opacity: 0;
+      transform: translate(-50%, 40px);
+      transition: all 0.8s ease;
+    }
+    .carousel .list .item.active .content {
+      opacity: 1;
+      transform: translate(-50%, 0);
+    }
+
+    .carousel .list .item .author { font-weight: bold; letter-spacing: 6px; animation: fadeUp 1s ease forwards; }
+    .carousel .list .item .title, 
+    .carousel .list .item .topic {
+      font-size: 2.5em; 
+      font-weight: bold; 
+      line-height: 1.3em;
+      word-wrap: break-word;
+    }
+    .carousel .list .item .topic { color: #f1683a; }
+    .carousel .list .item .des {
+      max-width: 700px; 
+      margin-top: 10px; 
+      line-height: 1.6em;
+      font-size: 1em;
+    }
+    .carousel .list .item .buttons {
+      display: flex; 
+      gap: 10px; 
+      margin-top: 20px;
+      flex-wrap: wrap;
+    }
+    .carousel .list .item .buttons button {
+      border: none; 
+      padding: 10px 18px;
+      background-color: #eee;
+      letter-spacing: 2px; 
+      font-family: Poppins; 
+      font-weight: 500;
+      border-radius: 20px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    .carousel .list .item .buttons button:hover {
+      background: #f1683a;
+      color: #fff;
+    }
+    .carousel .list .item .buttons button.video {
+      background-color: transparent; 
+      border: 1px solid #fff; 
+      color: #eee;
+    }
+    .carousel .list .item .buttons button.video:hover {
+      background: #fff;
+      color: #000;
+    }
+
+    /* thumbnail */
+    .thumbnail {
+      position: absolute; 
+      bottom: 30px; 
+      left: 50%; 
+      transform: translateX(-50%);
+      display: flex; 
+      gap: 15px; 
+      z-index: 100;
+      padding: 10px;
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+    .thumbnail::-webkit-scrollbar { display: none; }
+    .thumbnail .item {
+      width: 110px; 
+      height: 160px; 
+      flex-shrink: 0; 
+      position: relative;
+    }
+    .thumbnail .item img {
+      width: 100%; 
+      height: 100%; 
+      object-fit: cover; 
+      border-radius: 12px;
+    }
+    .thumbnail .item .content {
+      color: #fff; 
+      position: absolute; 
+      bottom: 5px; 
+      left: 8px; 
+      right: 8px;
+      font-size: 11px;
+    }
+
+    /* arrows */
+    .arrows {
+      position: absolute; 
+      bottom: 220px; 
+      left: 50%; 
+      transform: translateX(-50%);
+      display: flex; 
+      gap: 15px; 
+      z-index: 200;
+    }
+    .arrows button {
+      width: 45px; 
+      height: 45px; 
+      border-radius: 50%;
+      background-color: rgba(255,255,255,0.3); 
+      border: none; 
+      color: #fff;
+      font-weight: bold; 
+      font-size: 18px;
+      transition: .3s; 
+      cursor: pointer;
+    }
+    .arrows button:hover { background-color: #fff; color: #000; }
+
+    /* animations */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* responsive */
+    @media screen and (max-width: 768px) {
+      .carousel .list .item .content {
+        top: 12%; 
+        width: 95%; 
+        text-align: center;
+      }
+      .carousel .list .item .title { font-size: 1.8em; }
+      .carousel .list .item .topic { font-size: 1.2em; }
+      .carousel .list .item .des { max-width: 100%; font-size: 0.9em; }
+      .arrows { bottom: 200px; }
+    }
+  </style>
+</head>
+<body>
+  <a href="../index.html" class="back-button"><span>&larr;</span> Back</a>
+
+  <div class="carousel">
+    <!-- Slides -->
+    <div class="list">
+      <div class="item active"><img src="image/biomass.gif">
+        <div class="content"><div class="title">BIOMASS ENERGY</div>
+        <div class="topic">RENEWABLE</div>
+        <div class="des">Biomass energy comes from organic materials like wood, agricultural crops, or waste. It can be burned directly for heat, or converted into biofuels for electricity and transport. Biomass helps reduce reliance on fossil fuels, though sustainability depends on responsible sourcing and reforestation.</div>
+        <div class="buttons">
+          <button onclick="window.open('https://www.energy.gov/eere/bioenergy/bioenergy-basics','_blank')">SEE MORE</button>
+          <button class="video" onclick="window.open('https://www.youtube.com/watch?v=nVl17JLn_u0','_blank')">VIDEO</button>
+        </div></div></div>
+      
+      <div class="item"><img src="image/hydro.gif">
+        <div class="content"><div class="title">HYDROPOWER</div>
+        <div class="topic">RENEWABLE</div>
+        <div class="des">Hydropower captures energy from flowing water—rivers, dams, or tides—to generate electricity. It’s one of the oldest renewable sources and can provide reliable, large-scale power. However, large dams can affect ecosystems and communities if not carefully planned.</div>
+        <div class="buttons">
+          <button onclick="window.open('https://www.energy.gov/eere/water/hydropower-basics','_blank')">SEE MORE</button>
+          <button class="video" onclick="window.open('https://www.youtube.com/watch?v=q8HmRLCgDAI','_blank')">VIDEO</button>
+        </div></div></div>
+      
+      <div class="item"><img src="image/solar.gif">
+        <div class="content"><div class="title">SOLAR ENERGY</div>
+        <div class="topic">RENEWABLE</div>
+        <div class="des">Solar power harnesses sunlight with photovoltaic cells or thermal systems. It is clean, abundant, and scalable from rooftop panels to massive solar farms. Advances in storage and efficiency continue to make solar one of the fastest-growing renewable technologies worldwide.</div>
+        <div class="buttons">
+          <button onclick="window.open('https://www.energy.gov/eere/solar/solar-energy-technologies-office','_blank')">SEE MORE</button>
+          <button class="video" onclick="window.open('https://www.youtube.com/watch?v=MslT9FoiSv4&t=2s','_blank')">VIDEO</button>
+        </div></div></div>
+      
+      <div class="item"><img src="image/thermal.gif">
+        <div class="content"><div class="title">GEOTHERMAL ENERGY</div>
+        <div class="topic">RENEWABLE</div>
+        <div class="des">Geothermal energy taps heat stored beneath the Earth’s crust. Wells bring steam or hot water to the surface to generate electricity or provide direct heating. It is a reliable source of baseload power but limited to regions with suitable geological conditions.</div>
+        <div class="buttons">
+          <button onclick="window.open('https://www.energy.gov/eere/geothermal/geothermal-basics','_blank')">SEE MORE</button>
+          <button class="video" onclick="window.open('https://www.youtube.com/watch?v=IdPTuwKEfmA','_blank')">VIDEO</button>
+        </div></div></div>
+      
+      <div class="item"><img src="image/wind.gif">
+        <div class="content"><div class="title">WIND ENERGY</div>
+        <div class="topic">RENEWABLE</div>
+        <div class="des">Wind energy uses turbines powered by moving air to generate electricity. It is clean, cost-effective, and scalable, from small community turbines to large offshore wind farms. Integration with the grid and environmental considerations are key factors for growth.</div>
+        <div class="buttons">
+          <button onclick="window.open('https://www.energy.gov/eere/wind/wind-energy-technologies-office','_blank')">SEE MORE</button>
+          <button class="video" onclick="window.open('https://www.youtube.com/watch?v=xy9nj94xvKA','_blank')">VIDEO</button>
+        </div></div></div>
+    </div>
+
+    <!-- Thumbnails -->
+    <div class="thumbnail">
+      <div class="item"><img src="image/biomass.gif"><div class="content"><div class="title">Biomass</div><div class="description">Organic power</div></div></div>
+      <div class="item"><img src="image/hydro.gif"><div class="content"><div class="title">Hydro</div><div class="description">Water energy</div></div></div>
+      <div class="item"><img src="image/solar.gif"><div class="content"><div class="title">Solar</div><div class="description">Sunlight power</div></div></div>
+      <div class="item"><img src="image/thermal.gif"><div class="content"><div class="title">Geothermal</div><div class="description">Earth heat</div></div></div>
+      <div class="item"><img src="image/wind.gif"><div class="content"><div class="title">Wind</div><div class="description">Air power</div></div></div>
+    </div>
+
+    <!-- Controls -->
+    <div class="arrows"><button id="prev"><</button><button id="next">></button></div>
+  </div>
+
+  <script>
+    let nextDom = document.getElementById('next');
+    let prevDom = document.getElementById('prev');
+    let items = document.querySelectorAll('.carousel .list .item');
+    let index = 0;
+
+    function showSlide(newIndex){
+      items[index].classList.remove('active');
+      index = (newIndex + items.length) % items.length;
+      items[index].classList.add('active');
+    }
+
+    nextDom.onclick = () => showSlide(index + 1);
+    prevDom.onclick = () => showSlide(index - 1);
+
+    setInterval(()=>{ showSlide(index + 1); }, 7000);
+  </script>
+</body>
+</html>
