@@ -5,15 +5,43 @@ Explore the live website at Energy Innovators.
 Website Structure
 The project is organized for scalability and ease of maintenance, with a clear and modular file structure:
 
-CodeG2-(website)-1/
-├── assets/         # Media assets (images, GIFs)
-├── css/           # Styling files
-├── js/            # JavaScript files
-├── models/        # 3D models
-├── pages/         # HTML pages
-├── index.html     # Main entry point
-├── script.js      # Main JavaScript
-└── style2.css     # Additional styles
+File Structure
+
+The project is organized into a clear, maintainable directory structure:
+
+
+
+
+
+assets/: Stores media files such as images and GIFs used for visuals and animations.
+
+
+
+css/: Contains styling files for the website’s layout, design, and responsiveness.
+
+
+
+js/: Houses JavaScript files for interactivity, dynamic content, and animations.
+
+
+
+models/: Includes 3D models for interactive visualizations.
+
+
+
+pages/: Contains HTML pages for various sections of the website.
+
+
+
+index.html: The main entry point, featuring the landing page and navigation.
+
+
+
+script.js: The primary JavaScript file for core functionality and interactions.
+
+
+
+style2.css: Additional styles for specific components or overrides.
 
 
 Key Features
