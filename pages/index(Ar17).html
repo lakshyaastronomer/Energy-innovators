@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Energy innovators</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            width: 100%;
+            font-family: Arial, sans-serif;
+        }
+
+        .container {
+            height: 100%;
+            width: 100%;
+            background-image: url('../assets/17.gif');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .content {
+            background: rgba(255, 255, 255, 0.8); 
+            padding: 40px;
+            max-width: 700px;
+            text-align: center;
+            border-radius: 12px;
+            animation: slideIn 2s ease-in-out;
+            max-height: 80%;
+            overflow-y: auto;
+        }
+
+        h1 {
+            color: #333;
+            font-size: 3em; 
+            margin-bottom: 20px;
+            animation: fadeInText 2s ease-in-out;
+        }
+
+        p {
+            color: #555;
+            font-size: 20px; 
+            line-height: 1.8;
+            max-width: 90%;
+            margin: 0 auto;
+            animation: fadeInText 3s ease-in-out;
+        }
+
+        .back-button {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            padding: 12px 25px;
+            background: linear-gradient(45deg, #ff6b6b, #f5a623);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-size: 16px;
+            font-weight: bold;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .back-button:hover {
+            background: linear-gradient(45deg, #0072ff, #00c6ff); 
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+        }
+
+        .back-button:active {
+            transform: translateY(2px);
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+        }
+
+       
+        .video-button {
+            display: inline-block;
+            background: linear-gradient(45deg, #00c6ff, #0072ff); 
+            color: #fff; 
+            padding: 10px 20px;
+            font-size: 16px;
+            text-align: center;
+            border-radius: 5px;
+            text-decoration: none;
+            margin-top: 20px;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        .video-button:hover {
+            background: linear-gradient(45deg, #0072ff, #00c6ff); 
+            transform: scale(1.05); 
+        }
+
+        .video-button:focus {
+            outline: none; 
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateY(50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadeInText {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="content">
+            <h1>Partnerships for the Goals: A Global Effort</h1>
+            <p>The "Partnerships for the Goals" goal is part of the United Nations' Sustainable Development Goals (SDGs) and focuses on strengthening the means of implementation and revitalizing the global partnership for sustainable development.
+
+                Achieving the SDGs requires strong, transparent, and effective partnerships between governments, the private sector, civil society, and international organizations. These partnerships are essential for mobilizing resources, knowledge, and expertise to address the complex challenges facing the world today.
+
+                This goal emphasizes the importance of international cooperation and solidarity to tackle global challenges such as poverty, inequality, and climate change. It calls for increased investment in developing countries, enhanced technology transfer, and fostering innovation to ensure that all countries can achieve the SDGs.
+
+                The goal also advocates for making the most of existing partnerships and building new alliances, fostering collaboration across sectors and borders to accelerate progress towards the global goals. Together, partnerships can drive innovation and provide the resources needed to ensure a sustainable, prosperous future for all.</p>
+            <a href="https://youtu.be/vrd0VefRp44?si=m9HZ6cSPZD6E4w-r" target="_blank" class="video-button">
+                Watch Video
+            </a>
+        </div>
+        <a href="index3.html" class="back-button">Back</a>
+    </div>
+</body>
+</html>
