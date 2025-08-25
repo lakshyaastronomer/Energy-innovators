@@ -1,3 +1,5 @@
+![image alt](https://github.com/lakshyaastronomer/Energy-innovators/blob/f07467c8ec46a6c4aae5b138498376b437a9bf6c/2025-08-26.png)
+
 Energy Innovators: Inspiring Sustainable Futures
 Project Overview
 Energy Innovators is an innovative educational platform designed to make learning about sustainability engaging and accessible. Through interactive 3D models, dynamic animations, and an educational game, the website brings renewable energy solutions and the United Nations’ Sustainable Development Goals (SDGs) to life. Built with modern web technologies, it offers a seamless, responsive experience across mobile, tablet, and desktop devices. The platform educates users on sustainable practices while fostering curiosity through interactive and visually appealing content.
