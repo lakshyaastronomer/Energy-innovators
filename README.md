@@ -140,3 +140,5 @@ Energy Innovators is a promising platform that combines modern web technologies 
 Visit Energy Innovators to explore this innovative platform and join the journey toward a sustainable future!
 
 ![image alt](https://github.com/lakshyaastronomer/Energy-innovators/blob/fb921ade620b88d7ffb19f1bd22e339f39047394/123.JPG)
+![image alt](https://github.com/lakshyaastronomer/Energy-innovators/blob/297eba94460c64adc9bd70d07038f9fd2bb91b1d/123456.JPG)
+![image alt](https://github.com/lakshyaastronomer/Energy-innovators/blob/297eba94460c64adc9bd70d07038f9fd2bb91b1d/12345.JPG)
